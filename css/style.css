@@ -25,7 +25,11 @@ body{
 .container{
 	background-color:white;
 }
-
+.navbar .dropdown:hover>.dropdown-menu {
+  display: block;
+  transform: scale(1);
+  max-height:1000px;
+}
 
 .dropdown .dropdown-menu {
   transition: all 0.5s;
@@ -33,9 +37,7 @@ body{
   transform-origin: top center;
   transform: scale(1, 0);
   display: block;
-}
-.dropdown:hover .dropdown-menu {
-  transform: scale(1);
+  max-height:0;
 }
 
 
