@@ -36,6 +36,17 @@ body{
 }
 .dropdown:hover .dropdown-menu {
   transform: scale(1);
+  transform: scale(1);
+  max-height:1000px;
+}
+
+.dropdown .dropdown-menu {
+  transition: all 0.5s;
+  overflow: hidden;
+  transform-origin: top center;
+  transform: scale(1, 0);
+  display: block;
+  max-height:0;
 }
 
 
