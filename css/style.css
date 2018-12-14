@@ -15,3 +15,7 @@ body{
 .maintitle{
 	font-weight:600;
 }
+
+.navbar .dropdown:hover>.dropdown-menu {
+  display: block;
+}
