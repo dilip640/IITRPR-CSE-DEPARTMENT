@@ -1,58 +1,60 @@
-body{
-	background: url(../img/body.png) fixed;
+body {
+    background: url(../img/body.png) fixed;
 }
 
-.nvbar{
-	padding:20px;
-	background-color: lightgoldenrodyellow;
-	margin-left:0;
-	margin-right:0;
+.nvbar {
+    padding: 20px;
+    background-color: lightgoldenrodyellow;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .nvbar img {
-    height:100px;
+    height: 100px;
 }
 
-.main{
-	background: white;
-	padding-left:0;
-	padding-right:0;
+.main {
+    background: white;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.maintitle{
-	font-weight:600;
+.maintitle {
+    font-weight: 600;
 }
-.container{
-	background-color:white;
+
+.container {
+    background-color: white;
 }
 
 
 .dropdown .dropdown-menu {
-  transition: all 0.5s;
-  overflow: hidden;
-  transform-origin: top center;
-  transform: scale(1, 0);
-  display: block;
+    transition: all 0.5s;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: scale(1, 0);
+    display: block;
 }
+
 .dropdown:hover .dropdown-menu {
-  transform: scale(1);
-  transform: scale(1);
-  max-height:1000px;
+    transform: scale(1);
+    transform: scale(1);
+    max-height: 1000px;
 }
 
 .dropdown .dropdown-menu {
-  transition: all 0.5s;
-  overflow: hidden;
-  transform-origin: top center;
-  transform: scale(1, 0);
-  display: block;
-  max-height:0;
+    transition: all 0.5s;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: scale(1, 0);
+    display: block;
+    max-height: 0;
 }
 
 
-thead{
-	background:#555;
-	color:white;
+thead {
+    background: #555;
+    color: white;
 }
 
 .instructorphoto img {
@@ -60,24 +62,39 @@ thead{
     border-radius: 120px;
     margin-bottom: 10px;
 }
+
 .instructor {
-  display: inline-block;
-  width: 120px;
-  text-align: center;
-  margin-right: 20px;
-  /* text-shadow: 0 0 black; */
-}
-.img-hover:hover {
-  opacity: 0.8;
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    margin-right: 20px;
+    /* text-shadow: 0 0 black; */
 }
 
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+.col-md-10{
+	padding-left:3rem;
+}
+
+.sec {
+	margin-bottom: 5px;
+	padding-bottom:20px;
+	border-bottom: 3px solid #a8df90;
+}
+.sec:last-child {
+   border-bottom: 0 none;
+}
 
 @media screen and (max-width: 756px) {
-  .nvbar img {
-    height:50px;
-  }
-   .nvbar h3 {
-    font-size:1.2rem;
-	padding-left:8px;
-  }
+    .nvbar img {
+        height: 50px;
+    }
+
+    .nvbar h3 {
+        font-size: 1.2rem;
+        padding-left: 8px;
+    }
 }
