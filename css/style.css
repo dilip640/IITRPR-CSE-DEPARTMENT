@@ -5,6 +5,8 @@ body{
 .nvbar{
 	padding:20px;
 	background-color: lightgoldenrodyellow;
+	margin-left:0;
+	margin-right:0;
 }
 
 .main{
