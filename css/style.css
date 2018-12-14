@@ -1,0 +1,13 @@
+body{
+	background: url(../img/body.png) fixed;
+}
+
+.nvbar{
+	padding:20px;
+}
+
+.main{
+	background: white;
+	padding-left:0;
+	padding-right:0;
+}
