@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="jquery.tabledit.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 
     <title>Hello, world!</title>
   </head>
@@ -109,28 +109,29 @@
 		  </div>
 		  <div class="col-md-12">
 			  <div class="table-responsive-sm">
-				<table class="table table-bordered">
+				<table id="mtable" class="table table-bordered">
 				  <thead>
 					<tr>
 					  <th>Code</th>
 					  <th>Course Name</th>
 					  <th>Type</th>
-					  <th>Last Modified on</th>
 					  <th>Pre-requisites</th>
-					  <th>Edit</th>
+					  <th></th>
 					</tr>
 				  </thead>
 				  <tbody class="bg">
 					  <?php require("../db.php");
 						$result = mysqli_query($con,"SELECT * FROM cources ORDER BY id");
 						while(($row = mysqli_fetch_array($result))){
-							$date = strtotime($row['date']);
-							echo '<tr><td>'.$row['code'].'</td>
-								<td class="tdred">'.$row['name'].'</td>
-								<td>'.$row['type'].'</td>
-								<td>'.date('m/d/Y', $date).'</td>
-								<td>'.$row['pre_req'].'</td>
-								<td><a href="#"><i class="fa fa-edit"></i></a></td></tr>';
+							echo '<tr row_id="'.$row['id'].'"><td ><div class="row_data" edit_type="click" col_name="code">'.$row['code'].'</div></td>
+								<td class="tdred"><div class="row_data" edit_type="click" col_name="name">'.$row['name'].'</div></td>
+								<td class="tdred"><div class="row_data" edit_type="click" col_name="type">'.$row['type'].'</div></td>
+								<td class="tdred"><div class="row_data" edit_type="click" col_name="pre_req">'.$row['pre_req'].'</div></td>
+								<td><span class="btn_edit" > <a href="#" class="btn btn-link " row_id="'.$row['id'].'" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> </span>
+								<span class="btn_save"> <a href="#" class="btn btn-link"  row_id="'.$row['id'].'"><i class="fa fa-floppy-o" aria-hidden="true"></i></a></span>
+								<span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="'.$row['id'].'"><i class="fa fa-times" aria-hidden="true"></i>
+</a></span>
+								</td></tr>';
 						}
 						mysqli_close($con);
 					  ?>
@@ -142,8 +143,101 @@
 	</div>
 	
     <!-- Optional JavaScript -->
+	<script>
+		$(document).find('.btn_save').hide();
+		$(document).find('.btn_cancel').hide(); 
+		$(document).on('click', '.btn_edit', function(event){
+		event.preventDefault();
+		var tbl_row = $(this).closest('tr');
+		var row_id = tbl_row.attr('row_id');
+		tbl_row.find('.btn_save').show();
+		tbl_row.find('.btn_cancel').show();
+		tbl_row.find('.btn_edit').hide(); 
+
+		//make the whole row editable
+		tbl_row.find('.row_data')
+		.attr('contenteditable', 'true')
+		.attr('edit_type', 'button')
+		.addClass('bg-light')
+		.css('padding','3px')
+
+		//--->add the original entry > start
+		tbl_row.find('.row_data').each(function(index, val) 
+		{  
+			//this will help in case user decided to click on cancel button
+			$(this).attr('original_entry', $(this).html());
+		}); 		
+		//--->add the original entry > end
+
+	});
+		$(document).on('click', '.btn_cancel', function(event) 
+	{
+		event.preventDefault();
+
+		var tbl_row = $(this).closest('tr');
+
+		var row_id = tbl_row.attr('row_id');
+		tbl_row.find('.btn_save').hide();
+		tbl_row.find('.btn_cancel').hide();
+		tbl_row.find('.btn_edit').show();
+
+		//make the whole row editable
+		tbl_row.find('.row_data')
+		.attr('contenteditable', 'false')
+		.attr('edit_type', 'click')
+		.removeClass('bg-light')
+		.css('padding','') 
+
+		tbl_row.find('.row_data').each(function(index, val) 
+		{   
+			$(this).html( $(this).attr('original_entry') ); 
+		});  
+	});
+		$(document).on('click', '.btn_save', function(event) {
+		event.preventDefault();
+		var tbl_row = $(this).closest('tr');
+		var row_id = tbl_row.attr('row_id');
+		tbl_row.find('.btn_save').hide();
+		tbl_row.find('.btn_cancel').hide();
+		tbl_row.find('.btn_edit').show();
+		//make the whole row editable
+		tbl_row.find('.row_data')
+		.attr('contenteditable', 'false')
+		.attr('edit_type', 'click')
+		.removeClass('bg-light')
+		.css('padding','') 
+
+		//--->get row data > start
+		var arr = {}; 
+		tbl_row.find('.row_data').each(function(index, val) 
+		{   
+			var col_name = $(this).attr('col_name');  
+			var col_val  =  $(this).html();
+			arr[col_name] = col_val;
+		});
+		//--->get row data > end
+
+		//use the "arr"	object for your ajax call
+		$.extend(arr, {row_id:row_id});
+
+		//out put to show
+		
+		$.ajax({
+			url: 'edit.php',
+			type: 'POST',
+			data: JSON.stringify(arr),
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+			async: false,
+			success: function(msg) {
+				//alert(msg);
+			},
+		});
+
+	});
+	</script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <div class="post_msg"> </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
