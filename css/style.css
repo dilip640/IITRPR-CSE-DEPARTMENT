@@ -5,6 +5,12 @@ body{
 .nvbar{
 	padding:20px;
 	background-color: lightgoldenrodyellow;
+	margin-left:0;
+	margin-right:0;
+}
+
+.nvbar img {
+    height:100px;
 }
 
 .main{
@@ -19,6 +25,31 @@ body{
 .container{
 	background-color:white;
 }
-.navbar .dropdown:hover>.dropdown-menu {
+
+
+.dropdown .dropdown-menu {
+  transition: all 0.5s;
+  overflow: hidden;
+  transform-origin: top center;
+  transform: scale(1, 0);
   display: block;
+}
+.dropdown:hover .dropdown-menu {
+  transform: scale(1);
+}
+
+
+thead{
+	background:#555;
+	color:white;
+}
+
+@media screen and (max-width: 756px) {
+  .nvbar img {
+    height:50px;
+  }
+   .nvbar h3 {
+    font-size:1.2rem;
+	padding-left:8px;
+  }
 }
