@@ -18,6 +18,9 @@ body{
 	padding-left:0;
 	padding-right:0;
 }
+.navbar-nav > li > .dropdown-menu { background-color: black; }
+.navbar-nav > li > .dropdown-menu .dropdown-item{ background-color: black; color: white;  }
+
 
 .maintitle{
 	font-weight:600;
