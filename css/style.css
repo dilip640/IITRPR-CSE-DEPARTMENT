@@ -18,9 +18,17 @@ body{
 	padding-left:0;
 	padding-right:0;
 }
-.navbar-nav > li > .dropdown-menu { background-color: black; }
-.navbar-nav > li > .dropdown-menu .dropdown-item{ background-color: black; color: white;  }
+.navbar-nav > li > .dropdown-menu { background-color: #343a40!important; }
+.navbar-nav > li > .dropdown-menu .dropdown-item{ background-color: #343a40!important; color: white;  }
 
+.bg
+{
+	background-color: #eee;
+}
+.tdred
+{
+	color:#B61F10;;
+}
 
 .maintitle{
 	font-weight:600;
