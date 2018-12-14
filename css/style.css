@@ -66,6 +66,11 @@ thead{
 	color:white;
 }
 
+.btn-outline-success {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 @media screen and (max-width: 756px) {
   .nvbar img {
     height:50px;

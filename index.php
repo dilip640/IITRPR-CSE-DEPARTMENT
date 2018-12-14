@@ -117,27 +117,18 @@
 					</tr>
 				  </thead>
 				  <tbody class="bg">
-					<tr>
-					  <td>GE103</td>
-					  <td class="tdred">Introduction to coumputing</td>
-					  <td>Core</td>
-					  <td>#</td>
-					  <td>None</td>
-					</tr>
-					<tr>
-					  <td>CS203</td>
-					  <td class="tdred">Digital Logic Design </td>
-					  <td>Core</td>
-					  <td>#</td>
-					  <td>#</td>
-					</tr>
-					<tr>
-					  <td><a href="template_course.html">CS201</a></td>
-					  <td class="tdred">Data Structures</td>
-					  <td>Core</td>
-					  <td>#</td>
-					  <td>GE104</td>
-					</tr>
+					  <?php require("db.php");
+						$result = mysqli_query($con,"SELECT * FROM cources ORDER BY id");
+						while(($row = mysqli_fetch_array($result))){
+							$date = strtotime($row['date']);
+							echo '<tr><td>'.$row['code'].'</td>
+								<td class="tdred">'.$row['name'].'</td>
+								<td>'.$row['type'].'</td>
+								<td>'.date('m/d/Y', $date).'</td>
+								<td>'.$row['pre_req'].'</td></tr>';
+						}
+						mysqli_close($con);
+					  ?>
 				  </tbody>
 				</table>
 			  </div>
