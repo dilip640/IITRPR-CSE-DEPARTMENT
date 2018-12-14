@@ -9,6 +9,10 @@ body{
 	margin-right:0;
 }
 
+.nvbar img {
+    height:100px;
+}
+
 .main{
 	background: white;
 	padding-left:0;
@@ -23,4 +27,19 @@ body{
 }
 .navbar .dropdown:hover>.dropdown-menu {
   display: block;
+}
+
+thead{
+	background:#555;
+	color:white;
+}
+
+@media screen and (max-width: 756px) {
+  .nvbar img {
+    height:50px;
+  }
+   .nvbar h3 {
+    font-size:1.2rem;
+	padding-left:8px;
+  }
 }
