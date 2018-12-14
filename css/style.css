@@ -16,6 +16,9 @@ body{
 .maintitle{
 	font-weight:600;
 }
+.container{
+	background-color:white;
+}
 .navbar .dropdown:hover>.dropdown-menu {
   display: block;
 }
