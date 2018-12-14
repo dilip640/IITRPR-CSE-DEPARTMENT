@@ -25,8 +25,17 @@ body{
 .container{
 	background-color:white;
 }
-.navbar .dropdown:hover>.dropdown-menu {
+
+
+.dropdown .dropdown-menu {
+  transition: all 0.5s;
+  overflow: hidden;
+  transform-origin: top center;
+  transform: scale(1, 0);
   display: block;
+}
+.dropdown:hover .dropdown-menu {
+  transform: scale(1);
   transform: scale(1);
   max-height:1000px;
 }

@@ -1,0 +1,40 @@
+body{
+	background: url(../img/body.png) fixed;
+}
+
+.nvbar{
+	padding:20px;
+	background-color: lightgoldenrodyellow;
+}
+
+.main{
+	background: white;
+	padding-left:0;
+	padding-right:0;
+}
+
+.maintitle{
+	font-weight:600;
+}
+.container{
+	background-color:white;
+}
+.navbar .dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.instructorphoto img {
+    width: 120px;
+    border-radius: 120px;
+    margin-bottom: 10px;
+}
+.instructor {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  margin-right: 20px;
+  /* text-shadow: 0 0 black; */
+}
+.img-hover:hover {
+  opacity: 0.8;
+}
