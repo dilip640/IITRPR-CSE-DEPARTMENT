@@ -9,7 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
-	<link rel="stylesheet" href="css/template_course.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Hello, world!</title>
 </head>
@@ -99,39 +98,49 @@
             </div>
         </nav>
     </div>
-    <div class="container sec" id="odd">
+    <div class="container sec">
 		<div class="row">
-		<div style="padding:1.5%" class="col-md-12"><a href="/"> Home </a> » Ug coursers</div>
+			<div style="padding:1.5%" class="col-md-12"><a href="/"> Home </a> » Ug coursers</div>
 		</div>
-			<div>
-				<h4>Digital Logic Design</h4>
+		<div class="row">
+			<div class="col-md-12">
+			<h4>Digital Logic Design</h4>
 			</div>
-			<div class="row">            
-			</div>
-    </div>
-	<div class="container sec" id="even">
-		<h3>Syllabus</h3><br>
+		</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Syllabus</h3><br>
+		</div>
 	</div>
-    <div class="container sec" id="odd">
-        <h3>Main Textbooks</h3>
-        <p>- Digital Logic Design By Ruth</p>
+    <div class="row">
+		<div class="col-md-6">
+			<h5>Main Textbooks</h5>
+        <ul><li> Digital Logic Design By Ruth</li></ul>
+		</div>
+		<div class="col-md-6">
         <h5>Reference Textbooks</h5>
-        <p>- VHDL design By MORRIS MANO</p>
+        <ul><li> VHDL design By MORRIS MANO</li></ul>
+		</div>
     </div>
-    <div class="container sec" id="odd">
+    <div class="row">
 		<div class="col-md-12">
         <h5>Credits Distribution:</h5>
         <p>The hours mentioned are time a student should spend in a week.</p>
 		</div>
 		<div class="col-md-6">
-        <table class="table">
+			<h5>Pre-requisites:</h5>
+			        <ul><li> GE108</li></ul>
+
+		</div>
+		<div class="col-md-6">
+        <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Lecture Hours</th>
-                    <th>Tutorial Hours</th>
-                    <th>Practical Hours</th>
-                    <th>Self-study Hours</th>
-                    <th>Total credits</th>
+                    <th scope="col">Lecture Hours</th>
+                    <th scope="col">Tutorial Hours</th>
+                    <th scope="col">Practical Hours</th>
+                    <th scope="col">Self-study Hours</th>
+                    <th scope="col">Total credits</th>
                 </tr>
             </thead>
             <tbody>
@@ -145,10 +154,12 @@
             </tbody>
         </table>
 		</div>
-		</div>
     </div>
-    <div class="container sec" id="odd">
-        <h3>Previous Instances of this course</h3>
+    <div class="row">
+		<div class="col-md-12">
+			<h3>Previous Instances of this course</h3>
+		</div>
+		<div class="col-md-6">
         <div class="list-group">
         <li class="list-group-item">
             <p class="list-group-item-heading">Jan 2019 - Jun 2019</p>
@@ -161,12 +172,9 @@
             <p class="list-group-item-heading">Co-ordinator: Sujata Pal</p>
         </li>
         </div>
-    </div>    
+		</div>
+    </div> 
     </div>
-    </div>
-
-
-        
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
