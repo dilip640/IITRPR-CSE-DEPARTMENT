@@ -3,7 +3,7 @@ body {
 }
 
 .instructorphoto img {
-    width: 120px;
+    width: 110px;
     border-radius: 120px;
     margin-bottom: 10px;
 }
@@ -12,29 +12,33 @@ body {
     display: inline-block;
     width: 120px;
     text-align: center;
-    margin-right: 20px;
-    /* text-shadow: 0 0 black; */
+    margin-right: 10px;
 }
 
 .img-hover:hover {
     opacity: 0.8;
 }
 
-.col-md-10{
-	padding-left:3rem;
+.col-md-8{
+	padding-left:2rem;
+}
+
+.col-md-4{
+    padding-right:0rem;
+    padding-left:1rem;
 }
 
 .sec {
 	margin-bottom: 2px;
 	padding-bottom:10px;
-	border-bottom: 3px solid #a8df90;
+	border-bottom: 3px solid #df2d0e;
 }
 .sec:last-child {
 	border-bottom: 0 none;
 }
 
 #odd{
-	background-color:lightgrey;
+	background-color:rgb(225, 198, 198);
 }
 
 #even{
