@@ -11,6 +11,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 	<link rel="stylesheet" href="../css/style.css" >
 	<link rel="stylesheet" href="../css/bootstrap-4-navbar.css" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Hello, world!</title>
   </head>
   
@@ -200,7 +201,7 @@
 			<h5>Main Textbooks<hr></h5>
 			<?php
 				foreach($m_text as $value)
-					echo '<ul><li>'.$value.'</li></ul>';
+					echo '<ul><li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li></ul>';
 			?>
         
 		</div>
@@ -208,7 +209,7 @@
 			<h5>Reference Textbooks<hr></h5>
 			<?php
 				foreach($r_text as $value)
-					echo '<ul><li>'.$value.'</li></ul>';
+					echo '<ul><li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li></ul>';
 			?>
 		</div>
     </div><br>
@@ -222,7 +223,7 @@
 				<?php
 					$temp=explode("#",$row['pre_req']);
 					foreach($temp as $value)
-						echo '<ul><li>'.$value.'</li></ul>';
+						echo '<ul><li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li></ul>';
 				?>
 
 		</div>
@@ -259,7 +260,7 @@
 		<?php
 			$result = mysqli_query($con,"SELECT * FROM instructer_info WHERE course_id='".$id."' ");
 			while(($row = mysqli_fetch_array($result))){
-				echo'<ul><li> '.$row['time'].' <br>
+				echo'<ul><li> '.$row['time'].' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a><br>
 				instructor:<a href=" "> '.$row['instructor'].'</a> <br>
 				course cordinator:<a href=" "> '.$row['c_cordinator'].'</a>
 				</li></ul>';
