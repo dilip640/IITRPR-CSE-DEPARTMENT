@@ -189,7 +189,7 @@
 						while(($row = mysqli_fetch_array($result))){
 							$date = strtotime($row['date']);
 							echo '<tr><td>'.$row['code'].'</td>
-								<td class="tdred">'.$row['name'].'</td>
+								<td class="tdred"><a href="course_detail.php?id='.$row['id'].'">'.$row['name'].'</a></td>
 								<td>'.$row['type'].'</td>
 								<td>'.date('m/d/Y', $date).'</td>
 								<td>'.$row['pre_req'].'</td></tr>';

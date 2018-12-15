@@ -211,7 +211,7 @@
 						$result = mysqli_query($con,"SELECT * FROM cources ORDER BY id");
 						while(($row = mysqli_fetch_array($result))){
 							echo '<tr row_id="'.$row['id'].'"><td ><div class="row_data" edit_type="click" col_name="code">'.$row['code'].'</div></td>
-								<td class="tdred"><div class="row_data" edit_type="click" col_name="name">'.$row['name'].'</div></td>
+								<td class="tdred"><div class="row_data" edit_type="click" col_name="name"><a href="course_detail.php?id='.$row['id'].'">'.$row['name'].'</a></div></td>
 								<td class="tdred"><div class="row_data" edit_type="click" col_name="type">'.$row['type'].'</div></td>
 								<td class="tdred"><div class="row_data" edit_type="click" col_name="pre_req">'.$row['pre_req'].'</div></td>
 								<td><span class="btn_edit" > <a href="#" class="btn btn-link " row_id="'.$row['id'].'" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> </span>
