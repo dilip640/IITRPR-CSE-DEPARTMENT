@@ -107,6 +107,28 @@
 			<br>
 			<h2 class="text-danger">UG COURSES</h2>
 		  </div>
+		</div>
+		<div id="inform" style="margin-bottom:20px;margin-left:20px;" class="row">
+			<div class="col-md-12">
+				<h5>Add New Course</h5>
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control data" col_name="code" placeholder="Code" required>
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control data" col_name="name" placeholder="Course Name" required>
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control data" col_name="type" placeholder="Type" required>
+			</div>
+			<div class="col-md-2">
+				<input type="text" class="form-control data" col_name="pre_req" placeholder="Pre-requisites" required>
+			</div>
+			<div class="col-md-2">
+				<button id="adda" type="submit" class="btn btn-primary">Add</button>
+			</div>
+		</div>
+		<div class="row">
 		  <div class="col-md-12">
 			  <div class="table-responsive-sm">
 				<table id="mtable" class="table table-bordered">
@@ -129,8 +151,8 @@
 								<td class="tdred"><div class="row_data" edit_type="click" col_name="pre_req">'.$row['pre_req'].'</div></td>
 								<td><span class="btn_edit" > <a href="#" class="btn btn-link " row_id="'.$row['id'].'" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> </span>
 								<span class="btn_save"> <a href="#" class="btn btn-link"  row_id="'.$row['id'].'"><i class="fa fa-floppy-o" aria-hidden="true"></i></a></span>
-								<span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="'.$row['id'].'"><i class="fa fa-times" aria-hidden="true"></i>
-</a></span>
+								<span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="'.$row['id'].'"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+								<span class="btn_delete"> <a href="#" class="btn btn-link" row_id="'.$row['id'].'"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
 								</td></tr>';
 						}
 						mysqli_close($con);
@@ -170,71 +192,111 @@
 		//--->add the original entry > end
 
 	});
-		$(document).on('click', '.btn_cancel', function(event) 
-	{
-		event.preventDefault();
+		$(document).on('click', '.btn_cancel', function(event){
+			event.preventDefault();
 
-		var tbl_row = $(this).closest('tr');
+			var tbl_row = $(this).closest('tr');
 
-		var row_id = tbl_row.attr('row_id');
-		tbl_row.find('.btn_save').hide();
-		tbl_row.find('.btn_cancel').hide();
-		tbl_row.find('.btn_edit').show();
+			var row_id = tbl_row.attr('row_id');
+			tbl_row.find('.btn_save').hide();
+			tbl_row.find('.btn_cancel').hide();
+			tbl_row.find('.btn_edit').show();
 
-		//make the whole row editable
-		tbl_row.find('.row_data')
-		.attr('contenteditable', 'false')
-		.attr('edit_type', 'click')
-		.removeClass('bg-light')
-		.css('padding','') 
+			//make the whole row editable
+			tbl_row.find('.row_data')
+			.attr('contenteditable', 'false')
+			.attr('edit_type', 'click')
+			.removeClass('bg-light')
+			.css('padding','') 
 
-		tbl_row.find('.row_data').each(function(index, val) 
-		{   
-			$(this).html( $(this).attr('original_entry') ); 
-		});  
-	});
+			tbl_row.find('.row_data').each(function(index, val) 
+			{   
+				$(this).html( $(this).attr('original_entry') ); 
+			});  
+		});
 		$(document).on('click', '.btn_save', function(event) {
-		event.preventDefault();
-		var tbl_row = $(this).closest('tr');
-		var row_id = tbl_row.attr('row_id');
-		tbl_row.find('.btn_save').hide();
-		tbl_row.find('.btn_cancel').hide();
-		tbl_row.find('.btn_edit').show();
-		//make the whole row editable
-		tbl_row.find('.row_data')
-		.attr('contenteditable', 'false')
-		.attr('edit_type', 'click')
-		.removeClass('bg-light')
-		.css('padding','') 
+			event.preventDefault();
+			var tbl_row = $(this).closest('tr');
+			var row_id = tbl_row.attr('row_id');
+			tbl_row.find('.btn_save').hide();
+			tbl_row.find('.btn_cancel').hide();
+			tbl_row.find('.btn_edit').show();
+			//make the whole row editable
+			tbl_row.find('.row_data')
+			.attr('contenteditable', 'false')
+			.attr('edit_type', 'click')
+			.removeClass('bg-light')
+			.css('padding','') 
 
-		//--->get row data > start
-		var arr = {}; 
-		tbl_row.find('.row_data').each(function(index, val) 
-		{   
-			var col_name = $(this).attr('col_name');  
-			var col_val  =  $(this).html();
-			arr[col_name] = col_val;
+			//--->get row data > start
+			var arr = {}; 
+			tbl_row.find('.row_data').each(function(index, val) 
+			{   
+				var col_name = $(this).attr('col_name');  
+				var col_val  =  $(this).html();
+				arr[col_name] = col_val;
+			});
+			//--->get row data > end
+
+			//use the "arr"	object for your ajax call
+			$.extend(arr, {row_id:row_id});
+
+			//out put to show
+			
+			$.ajax({
+				url: 'edit.php',
+				type: 'POST',
+				data: JSON.stringify(arr),
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				async: false,
+				success: function(msg) {
+					//alert(msg);
+				},
+			});
 		});
-		//--->get row data > end
-
-		//use the "arr"	object for your ajax call
-		$.extend(arr, {row_id:row_id});
-
-		//out put to show
-		
-		$.ajax({
-			url: 'edit.php',
-			type: 'POST',
-			data: JSON.stringify(arr),
-			contentType: 'application/json; charset=utf-8',
-			dataType: 'json',
-			async: false,
-			success: function(msg) {
-				//alert(msg);
-			},
+		$(document).on('click', '#adda', function(event){
+			event.preventDefault();
+			var arr = {}; 
+			var inform = $('#inform');
+			inform.find('.data').each(function(index, val) 
+			{   
+				var col_name = $(this).attr('col_name');  
+				var col_val  =  $(this).val();
+				arr[col_name] = col_val;
+			});
+			$.extend(arr, {row_id:-1});
+			$.ajax({
+				url: 'edit.php',
+				type: 'POST',
+				data: JSON.stringify(arr),
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				async: false,
+				success: function(msg) {
+					//alert(msg);
+					location.reload();
+				},
+			});
 		});
-
-	});
+		$(document).on('click', '.btn_delete', function(event){
+			event.preventDefault();
+			var tbl_row = $(this).closest('tr');
+			var row_id = tbl_row.attr('row_id');
+			$('table#mtable tr[row_id='+row_id+']').remove();
+			var arr={'row_id':row_id};
+			$.ajax({
+				url: 'edit.php',
+				type: 'POST',
+				data: JSON.stringify(arr),
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				async: false,
+				success: function(msg) {
+					//alert(msg);
+				},
+			});
+		});
 	</script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    <div class="post_msg"> </div>
