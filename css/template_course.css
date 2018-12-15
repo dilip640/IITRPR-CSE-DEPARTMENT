@@ -33,10 +33,10 @@ body {
 	border-bottom: 0 none;
 }
 
-.odd{
+#odd{
 	background-color:lightgrey;
 }
 
-.even{
-	background color:white;
+#even{
+	background-color:white;
 }
