@@ -22,8 +22,6 @@ body{
 .navbar-nav > li > .dropdown-menu .dropdown-item{ background-color: #343a40!important; color: white;  }
 .navbar-nav > li > .dropdown-menu > li > .dropdown-menu{ background-color: #343a40!important; color: white;  }
 
-
-
 .bg
 {
 	background-color: #eee;
@@ -40,10 +38,6 @@ body{
 	background-color:white;
 }
 
-thead{
-	background:#555;
-	color:white;
-}
 
 .btn-outline-success {
     color: #ffffff;

@@ -1,38 +1,6 @@
-body {
-    background: url(../img/body.png) fixed;
-}
 
-.instructorphoto img {
-    width: 80px;
-    border-radius: 120px;
-    margin-bottom: 10px;
-}
 
-.instructor {
-    display: inline-block;
-    width: 100px;
-    text-align: center;
-    margin-right: 10px;
-}
 
-.img-hover:hover {
-    opacity: 0.8;
-}
-
-.col-md-8{
-	padding-left:2rem;
-}
-
-.col-md-4{
-    padding-right:0rem;
-    padding-left:1rem;
-}
-
-.sec {
-	margin-bottom: 2px;
-	padding-bottom:10px;
-	border-bottom: 3px solid #df2d0e;
-}
 .sec:last-child {
 	border-bottom: 0 none;
 }
