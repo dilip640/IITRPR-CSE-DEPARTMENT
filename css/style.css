@@ -44,6 +44,12 @@ body{
     border-color: #ffffff;
 }
 
+.footer{
+	margin-left:-15px;
+	margin-right:-15px;
+	margin-top:15px;
+}
+
 @media screen and (max-width: 756px) {
   .nvbar img {
     height:50px;
