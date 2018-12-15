@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-10">
           <h3 class="maintitle">DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</h3>
-          <h5>Indian Institute Of Technology-Ropar</h5>
+          <h5>Indian Institute of Technology-Ropar</h5>
 		</div>
 	</div>
   
@@ -169,7 +169,7 @@
 
     <div class="container sec">
 		<div class="row">
-			<div style="padding:1.5%" class="col-md-12"><a href="/"> Home </a> » Ug coursers</div>
+			<div style="padding:1.5%" class="col-md-12"><a href="/"> Home </a><a href="/"> » Ug courses</a> »Digital logic design </div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
