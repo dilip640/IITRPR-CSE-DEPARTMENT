@@ -197,6 +197,11 @@
 			  </div>
 		  </div>
 		</diV>
+		<div class="footer">
+		<footer class="card-footer bg-dark text-center text-white footer-position">
+			<h6>Copyright © 2018, Department of Computer Science and Engineering</h6>
+		</footer>
+	</div>
 	</div>
 	
     <!-- Optional JavaScript -->
