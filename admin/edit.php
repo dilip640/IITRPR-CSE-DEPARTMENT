@@ -1,7 +1,6 @@
 <?php print('{}');
 	require("../db.php");
 	$data = json_decode(file_get_contents('php://input'), true);
-
 	if(count($data)==1){
 		$sql = "DELETE FROM cources WHERE id='".$data['row_id']."'";
 		mysqli_query($con,$sql);
