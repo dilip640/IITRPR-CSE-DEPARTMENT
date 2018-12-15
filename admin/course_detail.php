@@ -7,10 +7,10 @@
 	
   
     <!-- Bootstrap CSS -->
-	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css" >
-	<link rel="stylesheet" href="css/bootstrap-4-navbar.css" >
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+	<link rel="stylesheet" href="../css/style.css" >
+	<link rel="stylesheet" href="../css/bootstrap-4-navbar.css" >
     <title>Hello, world!</title>
   </head>
   
@@ -18,7 +18,7 @@
   <div class="container main">
 	<div class="row nvbar">
 		<div class="col-2">
-          <img src="img/logo.jpg" alt="">
+          <img src="../img/logo.jpg" alt="">
 		</div>
 		<div class="col-10">
           <h3 class="maintitle">DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</h3>
@@ -167,7 +167,7 @@
             </nav>
 	</div>
 	<?php
-		require("db.php");
+		require("../db.php");
 		$id=$_GET['id'];
 		$result = mysqli_query($con,"SELECT * FROM course_detail WHERE id='".$id."'");
 		$row = mysqli_fetch_array($result);
@@ -187,7 +187,7 @@
 		<div class="col-md-12">
 			<h5>Syllabus</h5><hr>
                 <ul class="list-group">
-                <li style="background: #ececec;" class="list-group-item"><p class="text-justify"><?php echo $row['syllabus'] ?> </p></li>
+                <li style="background: #ececec;" class="list-group-item"><p data="syllabus" class="text-justify editable"><?php echo $row['syllabus'] ?> </p></li>
                 </ul>
 		</div>
 	</div><br>
@@ -239,7 +239,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr id="credit">
 				<?php
 					$temp=explode("#",$row['credits']);
 					for($i=0;$i<5;$i++)
@@ -278,10 +278,78 @@
 	</div>
     </div>
 	
-	
+	<script>
+		$(document).on('click', '.editable', function(event){
+			event.preventDefault();
+			if($(this).attr('edit_type') == 'button')
+			{
+				return false; 
+			}
+
+			//make div editable
+			$(this).attr('contenteditable', 'true');
+			//add bg css
+			$(this).addClass('bg-light').css('padding','5px');
+
+			$(this).focus();
+		});
+		$(document).on('focusout', '.editable', function(event){
+			event.preventDefault();
+
+			if($(this).attr('edit_type') == 'button')
+			{
+				return false; 
+			}
+
+			$(this).attr('contenteditable', 'false');
+			//add bg css
+			$(this).removeClass('bg-light').css('padding','');
+			
+			if($(this).attr('data')=='credit'){
+				var arr = {}; 
+				var i=0;
+				$('#credit').find('.editable').each(function(index, val) 
+				{   
+					var col_val  =  $(this).html();
+					arr[i++] = col_val;
+				});
+				$.extend(arr, {id:"<?php echo $id; ?>"});
+				$.extend(arr, {type:"credit"});
+				$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+					}
+				});
+			}
+			else{
+				var arr = {}; 
+				$.extend(arr, {syllabus:$(this).html()});
+				$.extend(arr, {type:"syllabus"});
+				$.extend(arr, {id:"<?php echo $id; ?>"});
+				$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+					}
+				});
+			}
+		});
+	</script>
+	<div class="post_msg"> </div>
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="js/bootstrap-4-navbar.js"></script>
+   <script src="../js/bootstrap-4-navbar.js"></script>
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
