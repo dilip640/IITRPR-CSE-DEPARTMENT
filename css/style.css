@@ -50,6 +50,10 @@ body{
 	margin-top:15px;
 }
 
+.redtext ul li a{
+	color:#85220f;
+}
+
 @media screen and (max-width: 756px) {
   .nvbar img {
     height:50px;
