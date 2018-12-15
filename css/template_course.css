@@ -3,14 +3,14 @@ body {
 }
 
 .instructorphoto img {
-    width: 110px;
+    width: 80px;
     border-radius: 120px;
     margin-bottom: 10px;
 }
 
 .instructor {
     display: inline-block;
-    width: 120px;
+    width: 100px;
     text-align: center;
     margin-right: 10px;
 }
