@@ -16,4 +16,8 @@
 		$sqli = "UPDATE course_detail SET m_text='".$data['m_text']."' WHERE id='".$data['id']."' ";
 		mysqli_query($con, $sqli);
 	}
+	else if($data['type']=='r_text'){
+		$sqli = "UPDATE course_detail SET r_text='".$data['r_text']."' WHERE id='".$data['id']."' ";
+		mysqli_query($con, $sqli);
+	}
 ?>
