@@ -199,18 +199,21 @@
 		?>
 		<div class="col-md-6">
 			<h5>Main Textbooks<hr></h5>
+			<ul>
 			<?php
-				foreach($m_text as $value)
-					echo '<ul><li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li></ul>';
+				for($i=0;$i<count($m_text)-1;$i++)
+					echo '<li class="li_data" data="'.$m_text[$i].'">'.$m_text[$i].' <a class="m_text" href=""><i class="fa fa-times"></i></a></li>';
 			?>
-        
+			</ul>
 		</div>
 		<div class="col-md-6">
 			<h5>Reference Textbooks<hr></h5>
+			<ul>
 			<?php
 				foreach($r_text as $value)
-					echo '<ul><li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li></ul>';
+					echo '<li>'.$value.' <a href=""><i class="fa fa-times"></i></a></li>';
 			?>
+			</ul>
 		</div>
     </div><br>
     <div class="row">
@@ -220,12 +223,13 @@
 		</div>
 		<div class="col-md-6">
 			<h5>Pre-requisites<hr></h5>
+				<ul>
 				<?php
 					$temp=explode("#",$row['pre_req']);
 					foreach($temp as $value)
-						echo '<ul><li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li></ul>';
+						echo '<li>'.$value.' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a></li>';
 				?>
-
+				</ul>
 		</div>
 		<div class="col-md-6">
         <h5>Credits Distribution<hr></h5>
@@ -345,6 +349,32 @@
 					}
 				});
 			}
+		});
+		$(document).on('click', '.m_text', function(event){
+			event.preventDefault();
+			var ul=$(this).closest('ul');
+			$(this).closest('li').remove();
+			var m_texts='';
+			ul.find('.li_data').each(function(index, val) 
+			{   
+				m_texts+=$(this).attr('data')+'#';
+			});
+			var arr = {}; 
+			$.extend(arr, {m_text:m_texts});
+			$.extend(arr, {type:'m_text'});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$('.post_msg').html( '<pre class="bg-success">'+JSON.stringify(arr, null, 2) +'</pre>');
+			$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+					}
+			});
 		});
 	</script>
 	<div class="post_msg"> </div>
