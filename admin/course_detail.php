@@ -210,8 +210,8 @@
 			<h5>Reference Textbooks<hr></h5>
 			<ul>
 			<?php
-				foreach($r_text as $value)
-					echo '<li>'.$value.' <a href=""><i class="fa fa-times"></i></a></li>';
+				for($i=0;$i<count($r_text)-1;$i++)
+					echo '<li class="li_data" data="'.$r_text[$i].'">'.$r_text[$i].' <a class="r_text" href=""><i class="fa fa-times"></i></a></li>';
 			?>
 			</ul>
 		</div>
