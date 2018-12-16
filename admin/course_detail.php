@@ -188,7 +188,7 @@
 		<div class="col-md-12">
 			<h5>Syllabus</h5><hr>
                 <ul class="list-group">
-                <li style="background: #ececec;" class="list-group-item"><p data="syllabus" class="text-justify editable"><?php echo $row['syllabus'] ?> </p></li>
+                <li style="background: #ececec;" class="list-group-item"><p data="syllabus" class="text-justify editable"><?php echo $row['syllabus']; ?> </p></li>
                 </ul>
 		</div>
 	</div><br>
@@ -295,12 +295,37 @@
 				$result = mysqli_query($con,"SELECT * FROM instructer_info WHERE course_id='".$id."' ");
 				while(($row = mysqli_fetch_array($result))){
 					echo'<ul row_id="'.$row['id'].'"><li> '.$row['time'].' <a class="ins_info" href=""><i class="fa fa-times"></i></a><br>
-					instructor:<a href=" "> '.$row['instructor'].'</a> <br>
-					course cordinator:<a href=" "> '.$row['c_cordinator'].'</a>
+					instructor: '.html_entity_decode($row['instructor']).' <br>
+					course cordinator: '.html_entity_decode($row['c_cordinator']).'
 					</li></ul>';
 				}
 				mysqli_close($con);
 			?>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div id="inform" class="row">
+				<div class="col-md-12">
+					<input type="text" class="form-control data" col_name="time" placeholder="Time Interval e.g. Jul 2018 - Dec 2018" required><br>
+				</div>
+				<div class="col-md-12">
+					<input type="text" class="form-control data" col_name="instructor" placeholder="Instructors" required><br>
+				</div>
+				<div class="col-md-12">
+					<input type="text" class="form-control data" col_name="cordinator" placeholder="Co-ordinator" required><br>
+				</div>
+				<div class="col-md-3">
+					<button type="submit" class="btn btn-primary ins_info_add">Add</button>
+				</div>
+				<div class="col-md-8">
+				</div>
+				<div style="margin-top:20px" class="col-md-12">
+					<div class="alert alert-info" role="alert">
+						<strong>Note!</strong> To add Instructor or Co-ordinator add like below :- <br>
+						<xmp><a href="link to profile">Prof. abc</a></xmp>
+						To add multimple separate by comma
+					</div>
+				</div>
 			</div>
 		</div>
     </div> 
@@ -549,6 +574,31 @@
 						//alert('d');
 						location.reload();
 					}
+			});
+		});
+		$(document).on('click', '.ins_info_add', function(event){
+			event.preventDefault();
+			var arr = {}; 
+			var inform = $('#inform');
+			inform.find('.data').each(function(index, val) 
+			{   
+				var col_name = $(this).attr('col_name');  
+				var col_val  =  $(this).val();
+				arr[col_name] = col_val;
+			});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$.extend(arr, {type:'ins_info_add'});
+			$.ajax({
+				url: 'edit_course.php',
+				type: 'POST',
+				data: JSON.stringify(arr),
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				async: false,
+				success: function(msg) {
+					//alert(msg);
+					location.reload();
+				},
 			});
 		});
 	</script>

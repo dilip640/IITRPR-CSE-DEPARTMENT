@@ -9,7 +9,8 @@
 		mysqli_query($con, $sqli);
 	}
 	else if($data['type']=='syllabus'){
-		$sqli = "UPDATE course_detail SET syllabus='".$data['syllabus']."' WHERE id='".$data['id']."' ";
+		$d=mysql_real_escape_string($data['syllabus']);
+		$sqli = "UPDATE course_detail SET syllabus='".$d."' WHERE id='".$data['id']."' ";
 		mysqli_query($con, $sqli);
 	}
 	else if($data['type']=='m_text'){
@@ -26,6 +27,11 @@
 	}
 	else if($data['type']=='ins_info'){
 		$sqli = "DELETE from instructer_info WHERE course_id='".$data['id']."' and id='".$data['ins_info_id']."'";
+		mysqli_query($con, $sqli);
+	}
+	else if($data['type']=='ins_info_add'){
+		$sqli = "INSERT INTO instructer_info (course_id, time, instructor, c_cordinator)
+					VALUES ('".$data['id']."','".$data['time']."','".htmlentities($data['instructor'])."','".htmlentities($data['cordinator'])."')";
 		mysqli_query($con, $sqli);
 	}
 ?>
