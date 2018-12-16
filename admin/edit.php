@@ -11,9 +11,14 @@
 			$sqli = "INSERT INTO cources (code, name, type, pre_req)
 					VALUES ('".$data['code']."','".$data['name']."','".$data['type']."','".$data['pre_req']."')";
 			mysqli_query($con,$sqli);
+			$sqli = "INSERT INTO course_detail (id,name)
+					VALUES ('".mysqli_insert_id($con)."','".$data['name']."')";
+			mysqli_query($con,$sqli);
 		}
 		else{
 			$sqli = "UPDATE cources SET code='".$data['code']."',name='".$data['name']."',type='".$data['type']."',pre_req='".$data['pre_req']."' WHERE id='".$data['row_id']."' ";
+			mysqli_query($con, $sqli);
+			$sqli = "UPDATE course_detail SET name='".$data['name']."' WHERE id='".$data['row_id']."'";
 			mysqli_query($con, $sqli);
 		}
 	}

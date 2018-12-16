@@ -211,9 +211,9 @@
 						$result = mysqli_query($con,"SELECT * FROM cources ORDER BY id");
 						while(($row = mysqli_fetch_array($result))){
 							echo '<tr row_id="'.$row['id'].'"><td ><div class="row_data" edit_type="click" col_name="code">'.$row['code'].'</div></td>
-								<td class="tdred"><div class="row_data" edit_type="click" col_name="name"><a href="course_detail.php?id='.$row['id'].'">'.$row['name'].'</a></div></td>
-								<td class="tdred"><div class="row_data" edit_type="click" col_name="type">'.$row['type'].'</div></td>
-								<td class="tdred"><div class="row_data" edit_type="click" col_name="pre_req">'.$row['pre_req'].'</div></td>
+								<td class="tdred"><div edit_type="click" col_name="name"><a col_name="name" class="row_data" href="course_detail.php?id='.$row['id'].'">'.$row['name'].'</a></div></td>
+								<td><div class="row_data" edit_type="click" col_name="type">'.$row['type'].'</div></td>
+								<td><div class="row_data" edit_type="click" col_name="pre_req">'.$row['pre_req'].'</div></td>
 								<td><span class="btn_edit" > <a href="#" class="btn btn-link " row_id="'.$row['id'].'" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> </span>
 								<span class="btn_save"> <a href="#" class="btn btn-link"  row_id="'.$row['id'].'"><i class="fa fa-floppy-o" aria-hidden="true"></i></a></span>
 								<span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="'.$row['id'].'"><i class="fa fa-times" aria-hidden="true"></i></a></span>
@@ -239,27 +239,27 @@
 		$(document).find('.btn_save').hide();
 		$(document).find('.btn_cancel').hide(); 
 		$(document).on('click', '.btn_edit', function(event){
-		event.preventDefault();
-		var tbl_row = $(this).closest('tr');
-		var row_id = tbl_row.attr('row_id');
-		tbl_row.find('.btn_save').show();
-		tbl_row.find('.btn_cancel').show();
-		tbl_row.find('.btn_edit').hide(); 
+			event.preventDefault();
+			var tbl_row = $(this).closest('tr');
+			var row_id = tbl_row.attr('row_id');
+			tbl_row.find('.btn_save').show();
+			tbl_row.find('.btn_cancel').show();
+			tbl_row.find('.btn_edit').hide(); 
 
-		//make the whole row editable
-		tbl_row.find('.row_data')
-		.attr('contenteditable', 'true')
-		.attr('edit_type', 'button')
-		.addClass('bg-light')
-		.css('padding','3px')
+			//make the whole row editable
+			tbl_row.find('.row_data')
+			.attr('contenteditable', 'true')
+			.attr('edit_type', 'button')
+			.addClass('bg-light')
+			.css('padding','3px')
 
-		//--->add the original entry > start
-		tbl_row.find('.row_data').each(function(index, val) 
-		{  
-			//this will help in case user decided to click on cancel button
-			$(this).attr('original_entry', $(this).html());
-		}); 		
-		//--->add the original entry > end
+			//--->add the original entry > start
+			tbl_row.find('.row_data').each(function(index, val) 
+			{  
+				//this will help in case user decided to click on cancel button
+				$(this).attr('original_entry', $(this).html());
+			}); 		
+			//--->add the original entry > end
 
 	});
 		$(document).on('click', '.btn_cancel', function(event){

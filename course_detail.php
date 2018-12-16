@@ -199,16 +199,16 @@
 		<div class="col-md-6">
 			<h5>Main Textbooks<hr></h5>
 			<?php
-				foreach($m_text as $value)
-					echo '<ul><li>'.$value.'</li></ul>';
+				for($i=0;$i<count($m_text)-1;$i++)
+					echo '<ul><li>'.$m_text[$i].'</li></ul>';
 			?>
         
 		</div>
 		<div class="col-md-6">
 			<h5>Reference Textbooks<hr></h5>
 			<?php
-				foreach($r_text as $value)
-					echo '<ul><li>'.$value.'</li></ul>';
+				for($i=0;$i<count($r_text)-1;$i++)
+					echo '<ul><li>'.$r_text[$i].'</li></ul>';
 			?>
 		</div>
     </div><br>
@@ -221,8 +221,8 @@
 			<h5>Pre-requisites<hr></h5>
 				<?php
 					$temp=explode("#",$row['pre_req']);
-					foreach($temp as $value)
-						echo '<ul><li>'.$value.'</li></ul>';
+					for($i=0;$i<count($temp)-1;$i++)
+						echo '<ul><li>'.$temp[$i].'</li></ul>';
 				?>
 
 		</div>
