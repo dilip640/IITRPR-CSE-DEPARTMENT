@@ -260,8 +260,8 @@
 			$result = mysqli_query($con,"SELECT * FROM instructer_info WHERE course_id='".$id."' ");
 			while(($row = mysqli_fetch_array($result))){
 				echo'<ul><li> '.$row['time'].' <br>
-				instructor: '.html_entity_decode($row['instructor']).' <br>
-				course cordinator: '.html_entity_decode($row['c_cordinator']).'
+				Instructor: '.html_entity_decode($row['instructor']).' <br>
+				Course Cordinator: '.html_entity_decode($row['c_cordinator']).'
 				</li></ul>';
 			}
 			mysqli_close($con);
