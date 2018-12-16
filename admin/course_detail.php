@@ -199,21 +199,41 @@
 		?>
 		<div class="col-md-6">
 			<h5>Main Textbooks<hr></h5>
+		<div class="row">
 			<ul>
 			<?php
 				for($i=0;$i<count($m_text)-1;$i++)
 					echo '<li class="li_data" data="'.$m_text[$i].'">'.$m_text[$i].' <a class="m_text" href=""><i class="fa fa-times"></i></a></li>';
 			?>
 			</ul>
+		 </div>
+		 <div class="row">
+		 <div class="col-md-4">
+				<input id="m_text_add" type="text" class="form-control data" placeholder="text book" required>
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-primary m_text_add">Add</button>
+			</div>
+		 </div>
 		</div>
 		<div class="col-md-6">
 			<h5>Reference Textbooks<hr></h5>
+		 <div class="row">
 			<ul>
 			<?php
 				for($i=0;$i<count($r_text)-1;$i++)
 					echo '<li class="li_data" data="'.$r_text[$i].'">'.$r_text[$i].' <a class="r_text" href=""><i class="fa fa-times"></i></a></li>';
 			?>
 			</ul>
+		 </div>
+		 <div class="row">
+		 <div class="col-md-4">
+				<input id="r_text_add" type="text" class="form-control data" placeholder="text book" required>
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-primary r_text_add">Add</button>
+			</div>
+		 </div>
 		</div>
     </div><br>
     <div class="row">
@@ -223,6 +243,7 @@
 		</div>
 		<div class="col-md-6">
 			<h5>Pre-requisites<hr></h5>
+			<div class="row">
 				<ul>
 				<?php
 					$temp=explode("#",$row['pre_req']);
@@ -230,6 +251,15 @@
 						echo '<li class="li_data" data="'.$temp[$i].'">'.$temp[$i].' <a class="pre_req" href=""><i class="fa fa-times"></i></a></li>';
 				?>
 				</ul>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<input id="pre_req_add" type="text" class="form-control" placeholder="pre_req" required>
+				</div>
+				<div class="col-md-2">
+					<button type="submit" class="btn btn-primary pre_req_add">Add</button>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-6">
         <h5>Credits Distribution<hr></h5>
@@ -260,19 +290,18 @@
 			<h5>Previous Instances of this course<hr></h5>
 		</div>
 		<div class="col-md-6">
-        <div class="list-group redtext">
-		<?php
-			$result = mysqli_query($con,"SELECT * FROM instructer_info WHERE course_id='".$id."' ");
-			while(($row = mysqli_fetch_array($result))){
-				echo'<ul><li> '.$row['time'].' <a href=""><i class="fa fa-times" aria-hidden="true"></i></a><br>
-				instructor:<a href=" "> '.$row['instructor'].'</a> <br>
-				course cordinator:<a href=" "> '.$row['c_cordinator'].'</a>
-				</li></ul>';
-			}
-			mysqli_close($con);
-		?>
-
-        </div>
+			<div class="list-group redtext">
+			<?php
+				$result = mysqli_query($con,"SELECT * FROM instructer_info WHERE course_id='".$id."' ");
+				while(($row = mysqli_fetch_array($result))){
+					echo'<ul row_id="'.$row['id'].'"><li> '.$row['time'].' <a class="ins_info" href=""><i class="fa fa-times"></i></a><br>
+					instructor:<a href=" "> '.$row['instructor'].'</a> <br>
+					course cordinator:<a href=" "> '.$row['c_cordinator'].'</a>
+					</li></ul>';
+				}
+				mysqli_close($con);
+			?>
+			</div>
 		</div>
     </div> 
     <br>
@@ -399,6 +428,126 @@
 					async: false,
 					success: function(msg) {
 						//alert('d');
+					}
+			});
+		});
+		$(document).on('click', '.pre_req', function(event){
+			event.preventDefault();
+			var ul=$(this).closest('ul');
+			$(this).closest('li').remove();
+			var pre_reqs='';
+			ul.find('.li_data').each(function(index, val) 
+			{   
+				pre_reqs+=$(this).attr('data')+'#';
+			});
+			var arr = {}; 
+			$.extend(arr, {pre_req:pre_reqs});
+			$.extend(arr, {type:'pre_req'});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+					}
+			});
+		});
+		$(document).on('click', '.ins_info', function(event){
+			event.preventDefault();
+			var ul_id=$(this).closest('ul').attr('row_id');
+			$(this).closest('ul').remove();
+			var arr = {}; 
+			$.extend(arr, {ins_info_id:ul_id});
+			$.extend(arr, {type:'ins_info'});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+					}
+			});
+		});
+		$(document).on('click', '.m_text_add', function(event){
+			event.preventDefault();
+			var m_texts=$('#m_text_add').val()+'#';
+			var ul=$('.m_text').closest('ul');
+			ul.find('.li_data').each(function(index, val) 
+			{   
+				m_texts+=$(this).attr('data')+'#';
+			});
+			var arr = {}; 
+			$.extend(arr, {m_text:m_texts});
+			$.extend(arr, {type:'m_text'});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+						location.reload();
+					}
+			});
+		});
+		$(document).on('click', '.r_text_add', function(event){
+			event.preventDefault();
+			var r_texts=$('#r_text_add').val()+'#';
+			var ul=$('.r_text').closest('ul');
+			ul.find('.li_data').each(function(index, val) 
+			{   
+				r_texts+=$(this).attr('data')+'#';
+			});
+			var arr = {}; 
+			$.extend(arr, {r_text:r_texts});
+			$.extend(arr, {type:'r_text'});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+						location.reload();
+					}
+			});
+		});
+		$(document).on('click', '.pre_req_add', function(event){
+			event.preventDefault();
+			var pre_reqs=$('#pre_req_add').val()+'#';
+			var ul=$('.pre_req').closest('ul');
+			ul.find('.li_data').each(function(index, val) 
+			{   
+				pre_reqs+=$(this).attr('data')+'#';
+			});
+			var arr = {}; 
+			$.extend(arr, {pre_req:pre_reqs});
+			$.extend(arr, {type:'pre_req'});
+			$.extend(arr, {id:"<?php echo $id; ?>"});
+			$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+						location.reload();
 					}
 			});
 		});
