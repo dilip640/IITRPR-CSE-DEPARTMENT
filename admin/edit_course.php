@@ -9,8 +9,7 @@
 		mysqli_query($con, $sqli);
 	}
 	else if($data['type']=='syllabus'){
-		$d=mysql_real_escape_string($data['syllabus']);
-		$sqli = "UPDATE course_detail SET syllabus='".$d."' WHERE id='".$data['id']."' ";
+		$sqli = "UPDATE course_detail SET syllabus='".$data['syllabus']."' WHERE id='".$data['id']."' ";
 		mysqli_query($con, $sqli);
 	}
 	else if($data['type']=='m_text'){
