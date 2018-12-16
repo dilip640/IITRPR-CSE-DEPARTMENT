@@ -278,7 +278,7 @@
 				<?php
 					$temp=explode("#",$row['credits']);
 					for($i=0;$i<5;$i++)
-						echo '<td data="credit" class="editable">'.$temp[$i].'</td>';
+						echo '<td><div data="credit" class="editable">'.$temp[$i].'</div></td>';
 				?>
                 </tr>
             </tbody>
