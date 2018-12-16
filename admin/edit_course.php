@@ -34,4 +34,5 @@
 					VALUES ('".$data['id']."','".$data['time']."','".htmlentities($data['instructor'])."','".htmlentities($data['cordinator'])."')";
 		mysqli_query($con, $sqli);
 	}
+	mysqli_close($con);
 ?>
