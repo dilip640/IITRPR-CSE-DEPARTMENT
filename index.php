@@ -167,13 +167,19 @@
 	</div>
 	<div class="container">
 		<div class="row">
-		  <div class="col-md-12">
+		  <div class="col-md-6">
 			<br>
 			<h2 class="text-danger">UG COURSES</h2>
 		  </div>
-		  <div class="col-md-12">
+		  <div class="col-md-6">
+			
+			<br>
+				<input type="text" style="width:200px" class="form-control data" id="myInput" onkeyup="myFunction()" placeholder="Search by course name" required>
+			
+		  </div>
+		  <div style="margin-top:10px" class="col-md-12">
 			  <div class="table-responsive-sm">
-				<table class="table table-bordered">
+				<table class="table table-bordered" id="myUL">
 				  <thead>
 					<tr>
 					  <th>Code</th>
@@ -189,7 +195,7 @@
 						while(($row = mysqli_fetch_array($result))){
 							$date = strtotime($row['date']);
 							echo '<tr><td>'.$row['code'].'</td>
-								<td class="tdred"><a href="course_detail.php?id='.$row['id'].'">'.$row['name'].'</a></td>
+								<td class="tdred" ><a href="course_detail.php?id='.$row['id'].'">'.$row['name'].'</a></td>
 								<td>'.$row['type'].'</td>
 								<td>'.date('m/d/Y', $date).'</td>
 								<td>'.$row['pre_req'].'</td></tr>';
@@ -210,6 +216,29 @@
 	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script>
+	function myFunction() {
+  var input, filter, table, tr, td, i,td1, txtValue,txtValue1;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myUL");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+	td1 = tr[i].getElementsByTagName("td")[1];
+    if (td || td1) {
+      txtValue = td.textContent || td.innerText;
+	  txtValue1 = td1.textContent || td1.innerText;  
+      if (txtValue.toUpperCase().indexOf(filter) > -1 ||txtValue1.toUpperCase().indexOf(filter) > -1  ) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+	</script>
+	
 	<script src="js/bootstrap-4-navbar.js"></script>
 	
    
