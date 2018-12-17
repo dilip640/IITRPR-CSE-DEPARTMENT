@@ -228,26 +228,28 @@
 		</div>
 		<div class="col-md-6">
         <h5>Credits Distribution<hr></h5>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Lecture Hours</th>
-                    <th scope="col">Tutorial Hours</th>
-                    <th scope="col">Practical Hours</th>
-                    <th scope="col">Self-study Hours</th>
-                    <th scope="col">Total credits</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-				<?php
-					$temp=explode("#",$row['credits']);
-					for($i=0;$i<5;$i++)
-						echo '<td data="credit" class="editable">'.$temp[$i].'</td>';
-				?>
-                </tr>
-            </tbody>
+		<div style="font-size:.9rem" class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Lecture Hours</th>
+						<th scope="col">Tutorial Hours</th>
+						<th scope="col">Practical Hours</th>
+						<th scope="col">Self-study Hours</th>
+						<th scope="col">Total credits</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<?php
+						$temp=explode("#",$row['credits']);
+						for($i=0;$i<5;$i++)
+							echo '<td data="credit" class="editable">'.$temp[$i].'</td>';
+					?>
+					</tr>
+				</tbody>
         </table>
+		</div>
 		</div>
     </div><br>
     <div class="row">
