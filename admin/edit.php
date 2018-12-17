@@ -22,6 +22,5 @@
 			mysqli_query($con, $sqli);
 		}
 	}
-	die;
-	
+	mysqli_close($con);
 ?>
