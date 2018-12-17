@@ -263,6 +263,7 @@
 		</div>
 		<div class="col-md-6">
         <h5>Credits Distribution<hr></h5>
+		<div style="font-size:.9rem" class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -283,6 +284,7 @@
                 </tr>
             </tbody>
         </table>
+		</div>
 		</div>
     </div><br>
     <div class="row">
