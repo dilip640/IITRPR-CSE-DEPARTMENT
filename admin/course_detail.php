@@ -324,7 +324,7 @@
 				<div style="margin-top:20px" class="col-md-12">
 					<div class="alert alert-info" role="alert">
 						<strong>Note!</strong> To add Instructor or Co-ordinator add like below :- <br>
-						<xmp><a href="link to profile">Prof. abc</a></xmp>
+						<strong>&#x3C;a href=&#x22;link to profile&#x22;&#x3E;Prof. abc&#x3C;/a&#x3E; , &#x3C;a href=&#x22;link to profile&#x22;&#x3E;Prof. xyz&#x3C;/a&#x3E;</strong><br>
 						To add multimple separate by comma
 					</div>
 				</div>
