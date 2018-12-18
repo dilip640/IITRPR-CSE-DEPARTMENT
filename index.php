@@ -25,7 +25,7 @@
 		</div>
 	</div>
   
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="http://cse.iitrpr.ac.in/">Home <span class="sr-only">(current)</span></a>
                         </li>
                        
                         <li class="nav-item dropdown">
@@ -41,17 +41,17 @@
                                 People
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">faculty</a></li>
-                                <li><a class="dropdown-item" href="#">post doctorate</a></li>
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/faculty">faculty</a></li>
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/post-docs">post doctorate</a></li>
                                 <li><a class="dropdown-item dropdown-toggle" href="#">students</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Btech</a></li>
-                                        <li><a class="dropdown-item" href="#">Ms()</a></li>
-                                        <li><a class="dropdown-item" href="#">Phd</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/btech-students">Btech</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/msr-0">Ms(R)</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/students/phd-students">Phd</a></li>
 
                                     </ul>
                                 </li>
-								<li><a class="dropdown-item" href="#">post doctorate</a></li>
+								<li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/research-staff">Research Staff</a></li>
                               <!--  <li><a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#">Submenu action 2</a></li>
@@ -71,18 +71,18 @@
                               <!--  <li><a class="dropdown-item" href="#"></a></li>  -->
                                 <li><a class="dropdown-item dropdown-toggle" href="#">Programs</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Btech</a></li>
-                                        <li><a class="dropdown-item" href="#">Ms(R)</a></li>
-                                        <li><a class="dropdown-item" href="#">phd</a></li>
-                                        <li><a class="dropdown-item" href="#">Mtech</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/programmes/btech">Btech</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/programmes/msr">Ms(R)</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/programmes/PhD">phd</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/mtech">Mtech</a></li>
 
 
                                     </ul>
                                 </li>
                                 <li><a class="dropdown-item dropdown-toggle" href="#">course offered</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Undergraduate</a></li>
-                                        <li><a class="dropdown-item" href="#">postgraduate</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/ug-courses">Undergraduate</a></li>
+                                        <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/pg-courses">postgraduate</a></li>
 
 
                                     </ul>
@@ -95,10 +95,10 @@
                               Research
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Areas of Research</a></li>
-                                <li><a class="dropdown-item" href="#">Acse lab</a></li>  
-                                <li><a class="dropdown-item" href="#">computer vison</a></li>  
-                                <li><a class="dropdown-item" href="#">Computational<br> Resources @ IITRPR</a></li>  
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/areas-research">Areas of Research</a></li>
+                                <li><a class="dropdown-item" href="http://www.iitrpr.ac.in/acse/">Acse lab</a></li>  
+                                <li><a class="dropdown-item" href="http://www.iitrpr.ac.in/lasii/">computer vison</a></li>  
+                                <li><a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1LRhYZ48dgRoW8Lyv2xBZIpE7_VVuwu9G6o45KCIPLkY/pubhtml">Computational<br> Resources @ IITRPR</a></li>  
                             <!--    <li><a class="dropdown-item dropdown-toggle" href="#">ACSE Lab</a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#">Submenu action</a></li>
@@ -123,11 +123,11 @@
                               join us
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">faculty</a></li>
-                                <li><a class="dropdown-item" href="#">PhD/MS(R)</a></li>  
-                                <li><a class="dropdown-item" href="#">B-Tech</a></li>  
-                                <li><a class="dropdown-item" href="#">M-Tech</a></li>  
-                                <li><a class="dropdown-item" href="#">FAQ</a></li>  
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/join_us/prospective-faculty">faculty</a></li>
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/prospective-students-0">PhD/MS(R)</a></li>  
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/mtech-0">B-Tech</a></li>  
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/join_us/btech">M-Tech</a></li>  
+                                <li><a class="dropdown-item" href="http://cse.iitrpr.ac.in/faqs">FAQ</a></li>  
 								
                              <!--   <li><a class="dropdown-item dropdown-toggle" href="#">btech</a>
                                     <ul class="dropdown-menu">
@@ -147,7 +147,7 @@
                         </li>
 						
 						<li class="navbar-item">
-			<a class="nav-link" href="#">Contact Us</a>
+			<a class="nav-link" href="http://cse.iitrpr.ac.in/contact-us">Contact Us</a>
 		                </li>
 						
 					</ul>
@@ -160,7 +160,7 @@
                     
                 </div>
 													<form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a style="color:white" href="http://cse.iitrpr.ac.in/user/login">Login</a></button>
     </form>
 			
             </nav>
