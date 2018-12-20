@@ -7,9 +7,10 @@
 	
   
     <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css" >
+   <link rel="stylesheet" href="css/style.css" >
 	<link rel="stylesheet" href="css/bootstrap-4-navbar.css" >
     <title>Hello, world!</title>
   </head>
@@ -169,12 +170,28 @@
 		<div class="row">
 		  <div class="col-md-6">
 			<br>
-			<h2 class="text-danger">UG COURSES</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<h2 class="text-danger">COURSES</h2>
+			</div>
+			<div class="col-md-6">
+				<div class="dropdown">
+				  <button type="button" class="btn btn-sm btn-white dropdown-toggle" data-toggle="dropdown">
+					All Type
+				  </button>
+				  <div class="dropdown-menu">
+					<a class="dropdown-item" href="#">All Type</a>
+					<a class="dropdown-item" href="#">Core</a>
+					<a class="dropdown-item" href="#">Elective</a>
+				  </div>
+				</div>
+			</div>
+		</div>
 		  </div>
 		  <div class="col-md-6">
 			
 			<br>
-				<input type="text" style="width:200px" class="form-control data" id="myInput" onkeyup="myFunction()" placeholder="Search by course name" required>
+				<input type="text" style="width:200px" class="form-control form-control-sm data" id="myInput" onkeyup="myFunction()" placeholder="Search by course name" required>
 			
 		  </div>
 		  <div style="margin-top:10px" class="col-md-12">
@@ -239,10 +256,37 @@
 }
 	</script>
 	
+	<script>
+	$('.dropdown div > a').click(function(e){
+		var filter = $(this).html();
+		$('.dropdown > button').html(filter);
+		
+		if(filter!='All Type'){
+			var table, tr, td, i, txtValue;
+			table = document.getElementById("myUL");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[2];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}       
+			}
+		}
+		else
+			location.reload();
+	});
+	</script>
+	
 	<script src="js/bootstrap-4-navbar.js"></script>
 	
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+   </body>
 </html>
