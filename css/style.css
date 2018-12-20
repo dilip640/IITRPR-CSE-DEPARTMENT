@@ -54,6 +54,11 @@ a{
 	color:#85220f;
 }
 
+.btn-white{
+    background-color: white;
+    border-color: #ced4da;
+}
+
 @media screen and (max-width: 756px) {
   .nvbar img {
     height:50px;
