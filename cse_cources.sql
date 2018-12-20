@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2018 at 05:47 PM
+-- Generation Time: Dec 20, 2018 at 12:48 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -37,7 +37,6 @@ CREATE TABLE `cources` (
   `pre_req` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 -- --------------------------------------------------------
 
 --
@@ -52,9 +51,11 @@ CREATE TABLE `course_detail` (
   `pre_req` varchar(100) NOT NULL DEFAULT 'Sample#',
   `credits` varchar(20) NOT NULL DEFAULT '0#0#0#0#0#',
   `instructors_info` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `l_outcome` varchar(1500) NOT NULL DEFAULT 'Click to edit Learning Outcome'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `instructer_info`
@@ -65,9 +66,9 @@ CREATE TABLE `instructer_info` (
   `course_id` int(100) UNSIGNED NOT NULL,
   `time` varchar(100) NOT NULL,
   `instructor` varchar(200) NOT NULL,
-  `c_cordinator` varchar(200) NOT NULL
+  `c_cordinator` varchar(200) NOT NULL,
+  `Teaching` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Indexes for dumped tables
@@ -100,13 +101,13 @@ ALTER TABLE `instructer_info`
 -- AUTO_INCREMENT for table `cources`
 --
 ALTER TABLE `cources`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `instructer_info`
 --
 ALTER TABLE `instructer_info`
-  MODIFY `id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
