@@ -12,6 +12,10 @@
 		$sqli = "UPDATE course_detail SET syllabus='".$data['syllabus']."' WHERE id='".$data['id']."' ";
 		mysqli_query($con, $sqli);
 	}
+	else if($data['type']=='l_outcome'){
+		$sqli = "UPDATE course_detail SET l_outcome='".$data['l_outcome']."' WHERE id='".$data['id']."' ";
+		mysqli_query($con, $sqli);
+	}
 	else if($data['type']=='m_text'){
 		$sqli = "UPDATE course_detail SET m_text='".$data['m_text']."' WHERE id='".$data['id']."' ";
 		mysqli_query($con, $sqli);

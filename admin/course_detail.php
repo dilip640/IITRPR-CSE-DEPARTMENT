@@ -286,10 +286,18 @@
         </table>
 		</div>
 		</div>
-    </div><br>
+    </div>
+  <div class="row">
+   <div class="col-md-12">
+		<h5>Learning Outcomes</h5><hr>
+             <ul class="list-group">
+             <li style="background: #ececec;" class="list-group-item"><p data="l_outcome" class="text-justify editable"><?php echo $row['l_outcome']; ?> </p></li>
+              </ul>
+		</div>
+	</div><br>
     <div class="row">
 		<div class="col-md-12">
-			<h5>Previous Instances of this course<hr></h5>
+			<h5>Instances of this course<hr></h5>
 		</div>
 		<div class="col-md-6">
 			<div class="list-group redtext">
@@ -388,10 +396,27 @@
 					}
 				});
 			}
-			else{
+			else if($(this).attr('data')=='syllabus'){
 				var arr = {}; 
 				$.extend(arr, {syllabus:$(this).html()});
 				$.extend(arr, {type:"syllabus"});
+				$.extend(arr, {id:"<?php echo $id; ?>"});
+				$.ajax({
+					url: 'edit_course.php',
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) {
+						//alert('d');
+					}
+				});
+			}
+			  else if($(this).attr('data')=='l_outcome'){
+				var arr = {}; 
+				$.extend(arr, {l_outcome:$(this).html()});
+				$.extend(arr, {type:"l_outcome"});
 				$.extend(arr, {id:"<?php echo $id; ?>"});
 				$.ajax({
 					url: 'edit_course.php',

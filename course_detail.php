@@ -251,10 +251,18 @@
         </table>
 		</div>
 		</div>
-    </div><br>
+    </div>
+	<div class="row">
+	<div class="col-md-12">		
+	<h5>Learning Outcome</h5><hr>
+     <ul class="list-group">
+    <li style="background: #ececec;" class="list-group-item"><p class="text-justify"><?php echo $row['l_outcome'] ?> </p></li>
+    </ul>
+  </div>
+   </div><br>
     <div class="row">
 		<div class="col-md-12">
-			<h5>Previous Instances of this course<hr></h5>
+			<h5>Instances of this course<hr></h5>
 		</div>
 		<div class="col-md-6">
         <div class="list-group redtext">
@@ -263,6 +271,7 @@
 			while(($row = mysqli_fetch_array($result))){
 				echo'<ul><li> '.$row['time'].' <br>
 				Instructor: '.html_entity_decode($row['instructor']).' <br>
+				Teaching(Instructors): '.html_entity_decode($row['Teaching']).' <br>
 				Course Cordinator: '.html_entity_decode($row['c_cordinator']).'
 				</li></ul>';
 			}
