@@ -271,7 +271,7 @@
 			while(($row = mysqli_fetch_array($result))){
 				echo'<ul><li> '.$row['time'].' <br>
 				Instructor: '.html_entity_decode($row['instructor']).' <br>
-				Teaching(Instructors): '.html_entity_decode($row['Teaching']).' <br>
+				Teaching Page (Instructors): '.html_entity_decode($row['Teaching']).' <br>
 				Course Cordinator: '.html_entity_decode($row['c_cordinator']).'
 				</li></ul>';
 			}

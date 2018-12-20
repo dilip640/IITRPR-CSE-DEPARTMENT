@@ -306,6 +306,7 @@
 				while(($row = mysqli_fetch_array($result))){
 					echo'<ul row_id="'.$row['id'].'"><li> '.$row['time'].' <a class="ins_info" href=""><i class="fa fa-times"></i></a><br>
 					Instructor(s): '.html_entity_decode($row['instructor']).' <br>
+					Teaching Page (Instructors): '.html_entity_decode($row['Teaching']).' <br>
 					Course Cordinator: '.html_entity_decode($row['c_cordinator']).'
 					</li></ul>';
 				}
@@ -320,6 +321,9 @@
 				</div>
 				<div class="col-md-12">
 					<input type="text" class="form-control data" col_name="instructor" placeholder="Instructors" required><br>
+				</div>
+				<div class="col-md-12">
+					<input type="text" class="form-control data" col_name="teaching" placeholder="Teaching Page (Instructors)" required><br>
 				</div>
 				<div class="col-md-12">
 					<input type="text" class="form-control data" col_name="cordinator" placeholder="Co-ordinator" required><br>
