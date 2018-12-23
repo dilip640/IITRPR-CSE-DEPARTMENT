@@ -340,8 +340,8 @@
 				</div>
 				<div style="margin-top:20px" class="col-md-12">
 					<div class="alert alert-info" role="alert">
-						<strong>Note!</strong> To add Instructor or Co-ordinator add like below :- <br>
-						<strong>&#x3C;a href=&#x22;link to profile&#x22;&#x3E;Prof. abc&#x3C;/a&#x3E; , &#x3C;a href=&#x22;link to profile&#x22;&#x3E;Prof. xyz&#x3C;/a&#x3E;</strong><br>
+						<strong>Note!</strong> To add Instructor, Co-ordinator, Teaching page or TA(s)  add like below :- <br>
+						<strong>&#x3C;a href=&#x22;link to profile&#x22;&#x3E;Name&#x3C;/a&#x3E; , &#x3C;a href=&#x22;link to profile&#x22;&#x3E;Name&#x3C;/a&#x3E;</strong><br>
 						To add multimple separate by comma
 					</div>
 				</div>
