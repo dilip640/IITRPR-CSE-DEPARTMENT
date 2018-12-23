@@ -33,9 +33,9 @@
 		mysqli_query($con, $sqli);
 	}
 	else if($data['type']=='ins_info_add'){
-		$sqli = "INSERT INTO instructer_info (course_id, time, instructor, c_cordinator, Teaching)
+		$sqli = "INSERT INTO instructer_info (course_id, time, instructor, c_cordinator, Teaching, ta)
 					VALUES ('".$data['id']."','".$data['time']."','".htmlentities($data['instructor'])."','".htmlentities($data['cordinator'])."',
-					'".htmlentities($data['teaching'])."')";
+					'".htmlentities($data['teaching'])."', '".htmlentities($data['ta'])."')";
 		mysqli_query($con, $sqli);
 	}
 	mysqli_close($con);

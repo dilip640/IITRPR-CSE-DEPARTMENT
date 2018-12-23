@@ -169,17 +169,18 @@
 	<?php
 		require("db.php");
 		$id=$_GET['id'];
-		$result = mysqli_query($con,"SELECT * FROM course_detail WHERE id='".$id."'");
+        $result = mysqli_query($con,"SELECT * FROM course_detail WHERE id='".$id."'");
+        $row_course = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM cources WHERE id='".$id."'"));
 		$row = mysqli_fetch_array($result);
 		$name=$row['name'];
 	?>
     <div class="container sec">
 		<div class="row">
-			<div style="padding:1.5%" class="col-md-12"><a href="/"> Home </a><a href="/"> » Ug courses</a> »<?php echo $name; ?> </div>
+			<div style="padding:1.5%" class="col-md-12"><a href="/"> Home </a><a href="/"> »Courses</a> »<?php echo $name; ?> </div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			<h4 class="text-danger"><?php echo $name; ?> </h4>
+			<h4 class="text-danger"><?php echo $row_course['code'].' '.$name; ?> </h4>
 			</div>
 		</div>
         <br>
@@ -270,9 +271,10 @@
 			$result = mysqli_query($con,"SELECT * FROM instructer_info WHERE course_id='".$id."' ");
 			while(($row = mysqli_fetch_array($result))){
 				echo'<ul><li> '.$row['time'].' <br>
-				Instructor: '.html_entity_decode($row['instructor']).' <br>
+				Instructor(s): '.html_entity_decode($row['instructor']).' <br>
 				Teaching Page (Instructors): '.html_entity_decode($row['Teaching']).' <br>
-				Course Cordinator: '.html_entity_decode($row['c_cordinator']).'
+                Course Cordinator: '.html_entity_decode($row['c_cordinator']).' <br>
+                Teaching Assistant(s) : '.html_entity_decode($row['ta']).'
 				</li></ul>';
 			}
 			mysqli_close($con);

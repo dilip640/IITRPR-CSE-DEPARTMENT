@@ -171,6 +171,7 @@
 		require("../db.php");
 		$id=$_GET['id'];
 		$result = mysqli_query($con,"SELECT * FROM course_detail WHERE id='".$id."'");
+		$row_course = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM cources WHERE id='".$id."'"));
 		$row = mysqli_fetch_array($result);
 		$name=$row['name'];
 	?>
@@ -180,7 +181,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			<h4 class="text-danger"><?php echo $name; ?> </h4>
+			<h4 class="text-danger"><?php echo $row_course['code'].' '.$name; ?> </h4>
 			</div>
 		</div>
         <br>
@@ -307,7 +308,8 @@
 					echo'<ul row_id="'.$row['id'].'"><li> '.$row['time'].' <a class="ins_info" href=""><i class="fa fa-times"></i></a><br>
 					Instructor(s): '.html_entity_decode($row['instructor']).' <br>
 					Teaching Page (Instructors): '.html_entity_decode($row['Teaching']).' <br>
-					Course Cordinator: '.html_entity_decode($row['c_cordinator']).'
+					Course Cordinator: '.html_entity_decode($row['c_cordinator']).' <br>
+					Teaching Assistant(s) : '.html_entity_decode($row['ta']).'
 					</li></ul>';
 				}
 				mysqli_close($con);
@@ -320,13 +322,16 @@
 					<input type="text" class="form-control data" col_name="time" placeholder="Time Interval e.g. Jul 2018 - Dec 2018" required><br>
 				</div>
 				<div class="col-md-12">
-					<input type="text" class="form-control data" col_name="instructor" placeholder="Instructors" required><br>
+					<input type="text" class="form-control data" col_name="instructor" placeholder="Instructor(s)" required><br>
 				</div>
 				<div class="col-md-12">
 					<input type="text" class="form-control data" col_name="teaching" placeholder="Teaching Page (Instructors)" required><br>
 				</div>
 				<div class="col-md-12">
 					<input type="text" class="form-control data" col_name="cordinator" placeholder="Co-ordinator" required><br>
+				</div>
+				<div class="col-md-12">
+					<input type="text" class="form-control data" col_name="ta" placeholder="Teaching Assistant(s)" required><br>
 				</div>
 				<div class="col-md-3">
 					<button type="submit" class="btn btn-primary ins_info_add">Add</button>
