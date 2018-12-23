@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2018 at 12:48 PM
+-- Generation Time: Dec 23, 2018 at 08:44 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -48,7 +48,7 @@ CREATE TABLE `course_detail` (
   `syllabus` varchar(1500) NOT NULL DEFAULT 'Click to edit syllabus',
   `m_text` varchar(500) NOT NULL DEFAULT 'Sample#',
   `r_text` varchar(500) NOT NULL DEFAULT 'Sample#',
-  `pre_req` varchar(100) NOT NULL DEFAULT 'Sample#',
+  `pre_req` varchar(500) NOT NULL DEFAULT 'Sample#',
   `credits` varchar(20) NOT NULL DEFAULT '0#0#0#0#0#',
   `instructors_info` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -67,7 +67,8 @@ CREATE TABLE `instructer_info` (
   `time` varchar(100) NOT NULL,
   `instructor` varchar(200) NOT NULL,
   `c_cordinator` varchar(200) NOT NULL,
-  `Teaching` varchar(300) NOT NULL
+  `Teaching` varchar(300) NOT NULL,
+  `ta` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
